@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#07152e">
+    <title>AirX | Discover more of the world</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="announcement">✦ The world is closer with AirX — explore our demo fares</div>
+    <header class="site-header"><a class="logo" href="./" aria-label="AirX home"><span class="logo-mark">✈</span>
+            Air<span>X</span></a>
+        <nav aria-label="Main navigation"><a href="#search">Flights</a><a href="#destinations">Explore</a><a
+                href="#manage">My trips</a></nav><button class="agent-link" id="openAgent">✧ Ask AirX Agent</button>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-glow"></div>
+            <div class="hero-content">
+                <div class="eyebrow">YOUR JOURNEY, REIMAGINED</div>
+                <h1>Go further.<br><em>Feel more.</em></h1>
+                <p>Find your next escape with effortless booking and a personal travel assistant, all in one place.</p>
+                <a href="#search" class="hero-cta">Find your flight <span>→</span></a>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="planet">✦</div>
+                <div class="floating-ticket"><span>BOARDING PASS</span><b>AirX <small>✈</small></b>
+                    <div>PIT <span>→</span> ORD</div><small>YOUR WORLD AWAITS</small>
+                </div>
+            </div>
+        </section>
+        <section class="booking-panel" id="search">
+            <div class="section-header">
+                <div><span class="overline">EXPLORE THE POSSIBILITIES</span>
+                    <h2>Where to next?</h2>
+                </div><span class="tag">✦ SMART FLIGHT SEARCH</span>
+            </div>
+            <div class="trip-type"><label><input type="radio" name="trip" value="round" checked> Round
+                    trip</label><label><input type="radio" name="trip" value="oneway"> One way</label></div>
+            <form id="searchForm" class="search-grid"><label>From<select id="from" required></select></label><button
+                    class="swap" type="button" id="swap" title="Swap airports">⇄</button><label>To<select id="to"
+                        required></select></label><label>Departure<input type="date" id="depart" required></label><label
+                    id="returnLabel">Return<input type="date" id="return"></label><label>Passengers<select
+                        id="passengers">
+                        <option value="1">1 passenger</option>
+                        <option value="2">2 passengers</option>
+                        <option value="3">3 passengers</option>
+                        <option value="4">4 passengers</option>
+                    </select></label><label>Cabin<select id="cabin">
+                        <option>Economy</option>
+                        <option>Premium Economy</option>
+                        <option>Business</option>
+                    </select></label><button class="primary search-btn" type="submit">Search flights
+                    <span>→</span></button></form>
+            <p id="searchMessage" class="status" role="status"></p>
+        </section>
+        <section id="results" class="results-section hidden">
+            <div class="section-header">
+                <div><span class="overline">CHOOSE YOUR JOURNEY</span>
+                    <h2>Available flights</h2>
+                </div><span id="resultCount" class="tag"></span>
+            </div>
+            <div id="flightResults" class="flight-results"></div>
+        </section>
+        <section id="destinations" class="destinations">
+            <div class="section-header">
+                <div><span class="overline">INSPIRATION FOR YOUR NEXT GETAWAY</span>
+                    <h2>Popular destinations</h2>
+                </div><span class="tag">CURATED FOR YOU</span>
+            </div>
+            <div class="destination-grid"><button class="destination-card city-ny" data-dest="JFK"><span>01 / CITY
+                        LIGHTS</span><strong>New York</strong><small>Explore flights →</small></button><button
+                    class="destination-card city-ch" data-dest="ORD"><span>02 / ARCHITECTURE &
+                        CULTURE</span><strong>Chicago</strong><small>Explore flights →</small></button><button
+                    class="destination-card city-mi" data-dest="MIA"><span>03 / SUN &
+                        SEA</span><strong>Miami</strong><small>Explore flights →</small></button></div>
+        </section>
+        <section id="manage" class="manage-section">
+            <div><span class="overline">TRAVEL MADE EASY</span>
+                <h2>Your journey,<br><em>your way.</em></h2>
+                <p>Keep track of your AirX demo reservations and manage your plans in seconds.</p>
+            </div>
+            <div class="manage-card">
+                <h3>Manage a booking</h3>
+                <p>Enter your booking reference to view or cancel a reservation stored on this browser.</p>
+                <form id="lookupForm"><label>Confirmation number<input id="reference" placeholder="e.g. AX-AB12CD"
+                            required></label><button class="primary" type="submit">Find my booking →</button></form>
+                <div id="lookupResult" role="status"></div>
+            </div>
+        </section>
+    </main>
+    <footer><a class="logo" href="./">✈ Air<span>X</span></a>
+        <p>Wherever you go, go beyond.</p><span>© <span id="year"></span> AirX · Portfolio demo only · No real tickets
+            or payments</span>
+    </footer>
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-card"><button class="close" id="closeModal" aria-label="Close">×</button><span
+                class="overline">SECURE DEMO RESERVATION</span>
+            <h2 id="modalTitle">Traveler details</h2>
+            <div id="selectedFlight"></div>
+            <form id="bookingForm"><label>Full name<input id="travelerName" required minlength="2" maxlength="80"
+                        autocomplete="name" placeholder="Your full name"></label><label>Email address<input
+                        id="travelerEmail" type="email" required autocomplete="email"
+                        placeholder="you@example.com"></label>
+                <p class="note">This is a browser-only demonstration. Do not enter sensitive personal information. No
+                    payment is collected.</p><button class="primary" type="submit">Confirm demo booking →</button>
+            </form>
+            <div id="bookingSuccess" role="status"></div>
+        </div>
+    </div>
+    <div class="agent-widget"><button id="agentToggle" class="agent-fab" aria-label="Open AirX travel agent">✧ <span>Ask
+                AirX</span></button>
+        <section id="agentPanel" class="agent-panel hidden" aria-label="AirX travel assistant">
+            <div class="agent-header">
+                <div><span class="agent-dot"></span><b>AirX Travel Agent</b><small>Always here for your next
+                        adventure</small></div><button id="agentClose" aria-label="Close chat">×</button>
+            </div>
+            <div id="chatMessages" class="chat-messages" aria-live="polite">
+                <div class="bubble bot">Hi! I’m your AirX travel assistant. Try “Flights from Pittsburgh to Chicago” or
+                    “show my bookings.”</div>
+            </div>
+            <div class="quick-actions"><button data-ask="Flights from Pittsburgh to Chicago">Find
+                    flights</button><button data-ask="Show my bookings">My bookings</button><button
+                    data-ask="What destinations are available?">Destinations</button></div>
+            <form id="chatForm" class="chat-form"><input id="chatInput" placeholder="Ask about your trip..."
+                    aria-label="Message to AirX assistant" required><button type="submit" aria-label="Send">➤</button>
+            </form>
+        </section>
+    </div>
+    <script src="app.js" defer></script>
+</body>
+
+</html>
